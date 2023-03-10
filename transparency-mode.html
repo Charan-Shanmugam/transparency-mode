@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+    <body>
+        <audio id="transparencyPlayer" controls unmuted autoplay></audio>
+        <script type="text/javascript">
+            const audio = document.querySelector('#transparencyPlayer');
+            window.navigator.mediaDevices.getUserMedia({ video: false, audio: true })
+                .then(stream => {
+                    audio.srcObject = stream;
+                    audio.onloadedmetadata = (e) => {
+                        audio.play();
+                    };
+                })
+                .catch( () => {
+                    alert('Enabling transparency mode');
+               });
+        </script>
+    </body>
+</html>
